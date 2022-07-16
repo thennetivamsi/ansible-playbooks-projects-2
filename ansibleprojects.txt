@@ -1,0 +1,38 @@
+*ansible projects*
+*project 1 (ansible to redhat on it install DOCKER, GIT, TREE, HTTPD)
+---
+- hosts: 172.31.86.54
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: Install docker for redhat family
+      command: yum install docker -y
+      when: ansible_os_family== "RedHat"
+    - name: Install git for redhat family
+      command: yum install git -y
+      when: ansible_os_family== "RedHat"
+    - name: Install tree  for redhat family
+      command: yum install tree -y 
+      when: ansible_os_family== "RedHat"
+    - name: Install httpd  for redhat family
+      command: yum install httpd -y 
+      when: ansible_os_family== "RedHat"
+
+*project 2 (ansible to UBUNTU on it install JENKINS, MAVEN, JAVA)
+
+---
+- hosts: 172.31.90.19
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+     - name: Install jenkins for ubuntu family
+       command: sudo apt-get install jenkins -y
+	 when: ansible_os_family== "Ubuntu"
+     - name: Install maven for debian family
+	 command: apt install maven -y
+       when: ansible_os_family== "Ubuntu"
+     - name: Install java  for ubuntu family
+       command: apt install java -y 
+       when: ansible_os_family== "Ubuntu"
